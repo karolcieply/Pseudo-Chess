@@ -2,7 +2,7 @@
 // Created by Karol on 30.12.2020.
 //
 
-#include "Figures.h"
+#include "figures.h"
 // f-from w-where v-value xy-wspolrzedne
 bool figures::UserMove(int fy,int fx, int wy,int wx,int fv){
   switch(abs(fv)){
@@ -24,9 +24,8 @@ bool figures::UserMove(int fy,int fx, int wy,int wx,int fv){
 }
 bool figures::Pawn(int fy,int fx, int wy,int wx,int fv){
   return  (fv * (fy - wy) >= 0 && //czy pionek jedzie do przodu bialy pionek to -6 i poruzaja sie np z 2 na 3 (2-3)*6=-1*-6>0 czarny np z 7 na 6 (7-6)*6>0
-      (abs(fy - wy) == 1 || (abs(fy - wy) == 2 && (fy == 1 ||
-         fy == 6))) && //abs-wartosc bezwzgledna sprawdzenie czy pole pionowo zmienia sie o 1 czy o 2 a jezeli o 2 to sprawdza czy stoi na polu nr 2/7
-      ((fx == wx && gs.chessboard[wy][wx] == 0) || (abs(fx - wx) == 1 && gs.chessboard[wy][wx] != 0))); //sprawdzenie czy pion jedzie prosto i czy nic nie stoi na jego drodze albo czy bije po skosie figure
+      (abs(fy - wy) == 1 || (abs(fy - wy) == 2 && (fy == 1 || fy == 6))) &&//abs-wartosc bezwzgledna sprawdzenie czy pole pionowo zmienia sie o 1 czy o 2 a jezeli o 2 to sprawdza czy stoi na polu nr 2/7
+      ((fx == wx && gs.chessboard[wy][wx] == 0) || (abs(fy-wy)==1&&(abs(fx - wx) == 1) && gs.chessboard[wy][wx] != 0)));//sprawdzenie czy pion jedzie prosto i czy nic nie stoi na jego drodze albo czy bije po skosie figure
 }
 bool figures::Knight(int fy, int fx, int wy, int wx) {
   return ((abs(fy - wy)==2 && abs(fx - wx)==1) ||(abs(fy - wy)==1 && abs(fx - wx)==2));

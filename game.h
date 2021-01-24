@@ -5,7 +5,7 @@
 #ifndef UNTITLED_GAME_H
 #define UNTITLED_GAME_H
 #include "gamespace.h"
-#include "Figures.h"
+#include "figures.h"
 #include <fstream>
 class game {
 public:
